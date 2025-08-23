@@ -5,23 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>羽衣我寶寶</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh; /* 佔滿整個視窗高度 */
-            display: flex;
-            justify-content: center; /* 水平置中 */
-            align-items: center;     /* 垂直置中 */
-            background-color: #f0f0f0; /* 背景淺灰色 */
-        }
-        a img {
-            max-width: 90%;   /* 最大寬度 90% 視窗 */<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>羽衣我寶寶</title>
-    <style>
         html, body {
             margin: 0;
             padding: 0;
@@ -30,10 +13,10 @@
         }
         body {
             display: flex;
-            justify-content: center; /* 水平置中 */
-            align-items: center;     /* 垂直置中 */
+            justify-content: center;
+            align-items: center;
             background-color: #f0f0f0;
-            text-align: center;      /* 補強手機置中 */
+            text-align: center;
         }
         a img {
             max-width: 90%;
@@ -41,21 +24,20 @@
             object-fit: contain;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             cursor: pointer;
-            display: inline-block;   /* 補強置中 */
+            display: inline-block;
+            transition: transform 0.3s ease; /* 動畫 */
         }
-    </style>
-</head>
-<body>
-    <a href="https://rain980520.github.io/random-picker" target="_blank">
-        <img src="ui.jpg" alt="抽選器">
-    </a>
-</body>
-</html>
+        /* 滑鼠懸停或點擊時放大 */
+        a img:hover,
+        a img:active {
+            transform: scale(1.05);
+        }
 
-            max-height: 90%;  /* 最大高度 90% 視窗 */
-            object-fit: contain;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* 陰影 */
-            cursor: pointer;  /* 滑鼠變成手型 */
+        /* 手機觸控效果 */
+        @media (hover: none) {
+            a img:active {
+                transform: scale(1.05);
+            }
         }
     </style>
 </head>
