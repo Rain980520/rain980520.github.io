@@ -15,7 +15,43 @@
             background-color: #f0f0f0; /* 背景淺灰色 */
         }
         a img {
-            max-width: 90%;   /* 最大寬度 90% 視窗 */
+            max-width: 90%;   /* 最大寬度 90% 視窗 */<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>羽衣我寶寶</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+        body {
+            display: flex;
+            justify-content: center; /* 水平置中 */
+            align-items: center;     /* 垂直置中 */
+            background-color: #f0f0f0;
+            text-align: center;      /* 補強手機置中 */
+        }
+        a img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            display: inline-block;   /* 補強置中 */
+        }
+    </style>
+</head>
+<body>
+    <a href="https://rain980520.github.io/random-picker" target="_blank">
+        <img src="ui.jpg" alt="抽選器">
+    </a>
+</body>
+</html>
+
             max-height: 90%;  /* 最大高度 90% 視窗 */
             object-fit: contain;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* 陰影 */
