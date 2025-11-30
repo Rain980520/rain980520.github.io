@@ -14,23 +14,26 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        min-height: 100vh;
+        justify-content: flex-start;
     }
 
     .top-img {
-    width: 90%;
-    max-width: 500px;
-    margin-top: 10px;
-    border-radius: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+        width: 50%;
+        max-width: 250px;
+        margin-top: 10px;
+        border-radius: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .welcome {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: bold;
         margin-top: 8px;
         margin-bottom: 15px;
+        text-align: center;
     }
 
     .btn-container {
@@ -39,7 +42,7 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 
     .custom-btn {
@@ -48,7 +51,7 @@
         background-color: white;
         border: 2px solid #333;
         border-radius: 12px;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
         cursor: pointer;
         transition: 0.2s;
@@ -64,13 +67,56 @@
 
     .footer {
         text-align: center;
-        padding: 13px 0;
+        padding: 15px 0;
         font-size: 14px;
         color: #6b7280;
         background-color: #f9fafb;
         line-height: 1.6;
         width: 100%;
-        margin-top: 40px;
+        margin-top: auto;
+    }
+
+    /* 響應式調整 */
+    @media (max-width: 600px) {
+        .top-img {
+            width: 70%;      /* 手機螢幕圖片稍大但仍縮小 */
+            max-width: 180px;
+        }
+
+        .welcome {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .custom-btn {
+            height: 50px;
+            font-size: 14px;
+        }
+
+        .btn-container {
+            gap: 10px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .top-img {
+            width: 80%;
+            max-width: 150px;
+        }
+
+        .welcome {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .custom-btn {
+            height: 45px;
+            font-size: 13px;
+        }
+
+        .btn-container {
+            gap: 8px;
+        }
     }
 </style>
 
@@ -82,41 +128,21 @@
 <div class="welcome">按鈕放不下了所以放這邊</div>
 
 <div class="btn-container">
-
     <a href="https://open.spotify.com/playlist/23DUbIINryjM5Rml2HmNCl?si=c837f3c5bc3745b5"><button class="custom-btn">Spotify歌單</button></a>
-
     <a href="https://ipac.nlpi.edu.tw/index?domain=kiosk"><button class="custom-btn">國資圖館內專用館藏查詢系統</button></a>
-
     <a href="https://ap.lib.taichung.gov.tw/HyLibMain/"><button class="custom-btn">臺中市立圖書館HyLib</button></a>
-
     <a href="https://root.x50.reimu.tw/login"><button class="custom-btn">X50後台</button></a>
-
     <a href="https://github.com/ddjhanony/"><button class="custom-btn">匿名大墩Github</button></a>
-
     <a href="https://github.com/Rain980520"><button class="custom-btn">我的Github</button></a>
-
     <a href="https://rain980520.github.io/random-picker"><button class="custom-btn">抽獎器</button></a>
-
     <a href="https://youtu.be/24OIBLd8uu8?si=VACiZqfwe3VDZYuV"><button class="custom-btn">Tell Your World – kz / covered by 月見ヤチヨ(cv.早見沙織)</button></a>
-
     <a href="https://youtu.be/2gBp8nzECm4?si=tsBRBIHv2ZDiuzYw"><button class="custom-btn">だいしきゅーだいしゅき/しぐれうい＆天宮こころ</button></a>
-
     <a href="https://youtu.be/AwAgFuab1BU?si=NO_AHQ2h9Xg9rtb9"><button class="custom-btn">Watch Me/covered by神楽めあ/結城さくな</button></a>
-
 </div>
 
-<script>
-    const welcomeText = document.getElementById('welcomeText');
-    window.onload = () => {
-        setTimeout(() => {
-            if (welcomeText) welcomeText.classList.add('show');
-        }, 1000);
-    };
-</script>
-
 <footer class="footer">
-    © 2025 All Rights Reserved. <br>
-    Designed by 恩睿
+    © 2025 @yc__.17 All Rights Reserved. <br>
+    Designed by Rain
 </footer>
 
 </body>
