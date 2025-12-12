@@ -130,8 +130,7 @@
     
 </head>
 
-    <script>
-    // 你 music 資料夾裡的音樂清單（自己填入 mp3 檔名）
+   <script>
     const musicList = [
         "music/song1.mp3"
     ];
@@ -141,31 +140,41 @@
         return musicList[Math.floor(Math.random() * musicList.length)];
     }
 
+    // 真正要播放的音樂
     const audio = new Audio();
     audio.src = getRandomMusic();
-    audio.volume = 0.3;  // 30% 音量
-    audio.loop = false;  // 我們要每次播完換新歌
+    audio.volume = 0.3;
+    audio.loop = false;
 
-    // 當歌曲結束 → 播放下一首
     audio.addEventListener("ended", function () {
         audio.src = getRandomMusic();
         audio.play();
     });
 
-    // 嘗試自動播放
+    // 無聲音軌（提高自動播放成功率）
+    const silentAudio = new Audio("music/silent.mp3");
+    silentAudio.volume = 0;    // 保險：完全靜音
+    silentAudio.muted = true;  // Chrome autoplay OK
+
     window.addEventListener("load", () => {
-        // 先用 muted autoplay，增加自動播放成功率
-        audio.muted = true;
-        audio.play().then(() => {
-            // 自動播放成功 → 取消靜音 & 設定音量
-            audio.muted = false;
-            audio.volume = 0.3;
-        }).catch(err => {
-            console.log("瀏覽器阻擋自動播放，需要使用者互動才能播放。");
+
+        // 1. 播無聲音軌
+        silentAudio.play().then(() => {
+
+            // 2. 無聲音軌成功 → 播真正的背景音樂
+            audio.play().then(() => {
+                audio.volume = 0.3;
+                audio.muted = false;
+            }).catch(() => {
+                console.log("背景音樂無法自動播放，等待使用者互動...");
+            });
+
+        }).catch(() => {
+            console.log("無聲音軌初始化失敗，等待使用者互動...");
         });
     });
 
-    // 若瀏覽器阻擋自動播放，只要使用者點一下畫面就開始播放
+    // 只要使用者點一下 → 保證能播
     document.addEventListener("click", () => {
         if (audio.paused) {
             audio.muted = false;
