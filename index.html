@@ -127,8 +127,54 @@
         }
     }
 </style>
-
+    
 </head>
+
+    <script>
+    // 你 music 資料夾裡的音樂清單（自己填入 mp3 檔名）
+    const musicList = [
+        "music/song1.mp3"
+    ];
+
+    // 隨機選歌曲
+    function getRandomMusic() {
+        return musicList[Math.floor(Math.random() * musicList.length)];
+    }
+
+    const audio = new Audio();
+    audio.src = getRandomMusic();
+    audio.volume = 0.3;  // 30% 音量
+    audio.loop = false;  // 我們要每次播完換新歌
+
+    // 當歌曲結束 → 播放下一首
+    audio.addEventListener("ended", function () {
+        audio.src = getRandomMusic();
+        audio.play();
+    });
+
+    // 嘗試自動播放
+    window.addEventListener("load", () => {
+        // 先用 muted autoplay，增加自動播放成功率
+        audio.muted = true;
+        audio.play().then(() => {
+            // 自動播放成功 → 取消靜音 & 設定音量
+            audio.muted = false;
+            audio.volume = 0.3;
+        }).catch(err => {
+            console.log("瀏覽器阻擋自動播放，需要使用者互動才能播放。");
+        });
+    });
+
+    // 若瀏覽器阻擋自動播放，只要使用者點一下畫面就開始播放
+    document.addEventListener("click", () => {
+        if (audio.paused) {
+            audio.muted = false;
+            audio.volume = 0.3;
+            audio.play();
+        }
+    });
+</script>
+
 <body>
 
  <a href="https://ddjhanony.github.io" target="_blank">
